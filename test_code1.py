@@ -2,7 +2,7 @@
 application for checking
 if circle is inscribed in a square.
 """
-def check_circle(radius, side) -> bool:
+def check_circle(radius: float | int, side: float | int) -> bool:
     """
     function checks if circle is 
     inscribed in square by using 
@@ -17,9 +17,12 @@ def check_circle(radius, side) -> bool:
     >>> check_circle(9, 3.5)
     False
     """
-    if isinstance(radius, str) or isinstance(side, str):
+    if not isinstance(radius, float) or not isinstance(side, float)\
+        or not isinstance(radius, int) or not isinstance(side, int):
         return None
-    return (radius == side / 2)
+    if radius < 0 or side < 0:
+        return None
+    return radius == side / 2
 
 if __name__ == '__main__':
     import doctest
